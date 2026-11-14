@@ -1,0 +1,17 @@
+# Python 3.12 recomendado (gensim y spaCy no siempre tienen wheels para versiones más nuevas)
+
+# Datos
+pandas>=2.2
+datasets>=3.0
+huggingface_hub        # src/download.py descarga el CSV con hf_hub_download
+
+# Preprocesado
+spacy>=3.8,<3.9
+es_core_news_sm @ https://github.com/explosion/spacy-models/releases/download/es_core_news_sm-3.8.0/es_core_news_sm-3.8.0-py3-none-any.whl
+gensim>=4.3.3          # Phrases, Dictionary, TfidfModel, SparseMatrixSimilarity
+
+# Recuperación
+bm25s>=0.2
+
+# Notebooks
+ipykernel

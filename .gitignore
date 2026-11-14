@@ -1,0 +1,27 @@
+# Contexto local del asistente (no se versiona)
+CLAUDE.md
+.claude/
+
+# Notebook de referencia del profesor (material del curso, no se versiona)
+notebooks/Text_Vectorization_I_students.ipynb
+
+# Datos: el CSV original se regenera con src/download.py
+data/dataset.csv
+# Artefactos grandes del procesado (chunks, diccionarios, índices)
+data/processed/*
+!data/processed/.gitkeep
+# La colección de trabajo sí se versiona (referencia de los relevant_ids)
+!data/processed/chunks.jsonl
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Sistema
+.DS_Store
