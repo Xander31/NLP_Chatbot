@@ -1,0 +1,76 @@
+
+q001 · [restriccion] Condumio de carne molida
+       qwen3.5:9b-q4_K_M: busco un relleno de carne molida con pasas y huevo duro para empanadas
+                          solapamiento 75% · copia 3 · 13 palabras
+    gemma4:12b-it-q4_K_M: relleno de carne de cerdo molida con pasas y huevo duro para empanadas
+                          solapamiento 75% · copia 2 · 13 palabras
+
+q002 · [ingredientes] Hamburguesa de tilapia con salsa de pepinillos
+       qwen3.5:9b-q4_K_M: ¿Qué puedo preparar con tilapia, galletas saladas y pepinillos para una hamburguesa de pescado?
+                          solapamiento 71% · copia 2 · 14 palabras
+    gemma4:12b-it-q4_K_M: ¿qué puedo preparar con tilapia, galletas trituradas y pepinillos para hacer hamburguesas de pescado?
+                          solapamiento 86% · copia 1 · 14 palabras [solapamiento_alto]
+
+q003 · [duda] Pepas con harina de arroz
+       qwen3.5:9b-q4_K_M: ¿cuánto tiempo hay que hornear las pepas rellenas de dulce para que queden crujientes?
+                          solapamiento 57% · copia 2 · 14 palabras
+    gemma4:12b-it-q4_K_M: ¿cuánto tiempo deben cocinarse las galletitas sin gluten rellenas de dulce en el horno?
+                          solapamiento 43% · copia 3 · 14 palabras
+
+q004 · [compra] GARBANZOS CON GAMBAS
+       qwen3.5:9b-q4_K_M: ¿qué ingredientes necesito para hacer un guiso cremoso de garbanzos con gambas y azafrán?
+                          solapamiento 50% · copia 3 · 14 palabras
+    gemma4:12b-it-q4_K_M: ¿qué ingredientes necesito para cocinar un guiso de legumbres con marisco para cuatro personas?
+                          solapamiento 0% · copia 1 · 14 palabras
+
+q005 · [busqueda] Tortilla del sacromonte tradicional
+       qwen3.5:9b-q4_K_M: tortilla babosa de criadillas, sesos y vino blanco
+                          solapamiento 100% · copia 2 · 8 palabras [solapamiento_alto]
+    gemma4:12b-it-q4_K_M: tortilla de cordero con sesos y tuétano estilo tradicional del sacromonte
+                          solapamiento 83% · copia 2 · 11 palabras [solapamiento_alto]
+
+q006 · [restriccion] Chorizos al vino
+       qwen3.5:9b-q4_K_M: busco un aperitivo de chorizo cocido en vino fino con laurel que quede jugoso
+                          solapamiento 56% · copia 2 · 14 palabras
+    gemma4:12b-it-q4_K_M: busco un aperitivo de embutidos cocinados en una salsa de vino con laurel
+                          solapamiento 57% · copia 3 · 13 palabras
+
+q007 · [duda] Mashi o arroz egipcio
+       qwen3.5:9b-q4_K_M: ¿Cuánto tiempo hay que cocer el arroz con seitán y especias para que quede perfecto?
+                          solapamiento 57% · copia 2 · 15 palabras
+    gemma4:12b-it-q4_K_M: ¿cuánto tiempo debo cocinar el arroz con seitán y frutos secos hasta que se seque el agua?
+                          solapamiento 62% · copia 3 · 17 palabras
+
+q008 · [busqueda] Albóndigas con arroz (¡Receta fácil y rápida!)
+       qwen3.5:9b-q4_K_M: albóndigas rellenas de queso en salsa de chipotle
+                          solapamiento 80% · copia 2 · 8 palabras [solapamiento_alto]
+    gemma4:12b-it-q4_K_M: albóndigas rellenas de queso crema con salsa de tomate y chile chipotle con arroz
+                          solapamiento 89% · copia 3 · 14 palabras [solapamiento_alto]
+
+q009 · [compra] El mejor brownie
+       qwen3.5:9b-q4_K_M: ¿qué necesito comprar para hacer un brownie húmedo con canela y cobertura de chocolate?
+                          solapamiento 29% · copia 2 · 14 palabras
+    gemma4:12b-it-q4_K_M: ¿Qué ingredientes necesito para hacer ese bizcocho de chocolate denso con cobertura de azúcar para cuatro personas?
+                          solapamiento 14% · copia 2 · 17 palabras
+
+q010 · [ingredientes] Flautas de pollo mexicanas
+       qwen3.5:9b-q4_K_M: ¿Qué antojito mexicano puedo hacer con tortilla de maíz, pollo cocido y crema para una cena?
+                          solapamiento 88% · copia 3 · 16 palabras [solapamiento_alto]
+    gemma4:12b-it-q4_K_M: ¿qué puedo preparar con tortillas de maíz, pollo y crema para un antojito crujiente?
+                          solapamiento 86% · copia 3 · 14 palabras [solapamiento_alto]
+
+== qwen3.5:9b-q4_K_M (10 consultas)
+  solapamiento de lemas: medio 66% | mediana 64%
+  longitud 8-20 palabras: 10/10
+  con copia literal (>= 4 palabras): 0/10
+  marcadas para revisar: 3/10
+  segundos por consulta: 6.8
+  solapamiento medio por tipo: busqueda 90% | ingredientes 79% | duda 57% | restriccion 65% | compra 39%
+
+== gemma4:12b-it-q4_K_M (10 consultas)
+  solapamiento de lemas: medio 60% | mediana 69%
+  longitud 8-20 palabras: 10/10
+  con copia literal (>= 4 palabras): 0/10
+  marcadas para revisar: 4/10
+  segundos por consulta: 10.8
+  solapamiento medio por tipo: busqueda 86% | ingredientes 86% | duda 53% | restriccion 66% | compra 7%

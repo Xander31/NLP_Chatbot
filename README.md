@@ -1,94 +1,78 @@
 # Chatbot de recetas con citas
 
-Proyecto de PLN (Máster en IA Aplicada, UC3M). Chatbot que responde preguntas sobre una colección de **recetas de cocina en español** citando las recetas que respaldan cada respuesta.
+Proyecto de PLN (Máster en IA Aplicada, UC3M): chatbot que responde preguntas sobre **recetas de cocina en español** citando las recetas en que se basa.
 
 - **Hito 1 (en curso):** baseline de recuperación con TF-IDF y BM25, evaluado con Recall@K y MRR.
-- **Hito 2:** sistema RAG (embeddings densos + LLM que cita las recetas) comparado con el baseline, con la misma unidad de indexación.
+- **Hito 2:** RAG (embeddings densos + LLM que cita) comparado con el baseline, con la misma unidad de indexación.
 
-Seguimos el notebook de referencia del profesor (*Text Vectorization I*, sección 4) siempre que es posible; las desviaciones se justifican aquí y en `MILESTONE_1.md`.
+Seguimos el notebook del profesor (*Text Vectorization I*, sección 4) siempre que es posible; las desviaciones se justifican abajo y en `MILESTONE_1.md`.
 
 ## Puesta en marcha
-
 ```bash
-git clone <URL del repo> && cd NLP_chatbot
-conda create -n pln python=3.12 -y      # Python 3.12: gensim y spaCy tienen wheels
+conda create -n pln python=3.12 -y
 conda activate pln
-pip install -r requirements.txt         # incluye el modelo es_core_news_md de spaCy
+pip install -r requirements.txt
 ```
-
-En VS Code, seleccionad el intérprete/kernel `pln`.
+En VS Code, seleccionad el intérprete `pln`. Para generar consultas hace falta además [Ollama](https://ollama.com/download).
 
 ## Pipeline
-
-Cada paso es un script reproducible que se ejecuta desde la raíz del repo:
-
-| # | Script | Entrada → salida | Estado |
+| # | Script | Salida | Estado |
 |---|---|---|---|
-| 1 | `src/download.py` | Hugging Face → `data/dataset.csv` | ✅ |
-| 2 | `src/build_collection.py` | `data/dataset.csv` → `data/processed/chunks.jsonl` | ✅ |
-| 3 | `src/preprocess.py` | `chunks.jsonl` → `tokens.jsonl`, `phrases.model`, `dictionary.dict` | ✅ |
-| 4 | `src/generate_queries.py` | muestreo + LLM → `queries.jsonl` | ⏳ |
+| 1 | `src/download.py` | `data/dataset.csv` | ✅ |
+| 2 | `src/build_collection.py` | `data/processed/chunks.jsonl` | ✅ |
+| 3 | `src/preprocess.py --n-process 4` | `tokens.jsonl`, `phrases.model`, `dictionary.dict` | ✅ |
+| 4 | `src/generate_queries.py` | `queries.jsonl` | 🔄 |
 | 5 | `src/retrieval.py` | TF-IDF y BM25 | ⏳ |
 | 6 | `src/evaluate.py` | Recall@K y MRR | ⏳ |
 
+Todos los scripts se ejecutan desde la raíz del repo y son deterministas.
+
+## Decisiones
+
+**1. Dataset.** [`somosnlp/recetas-cocina`](https://huggingface.co/datasets/somosnlp/recetas-cocina) (MIT), con la versión fijada y verificada por SHA-256 para que los `doc_id` sean reproducibles. El CSV no se sube al repo.
+
+**2. Filtrado.** 28.238 recetas → sin nulos: 22.640 → sin duplicados (`ingredients`, `steps`): 19.410 → **≤ 400 palabras: 17.505** (90,2 %). 400 es el límite superior del fragmento recomendado (200–400).
+
+**3. Unidad de indexación.** Una receta = un fragmento (`doc_00001_c00`), con el texto `Receta / Ingredientes / Preparación`. `chunks.jsonl` es la colección de trabajo y **se sube al repo**: es la referencia de los `relevant_ids`.
+
+**4. Títulos genéricos.** 1.238 recetas (7 %) tenían como título un eslogan («¡Receta FÁCIL y RÁPIDA!»). Se detectan porque no comparten ninguna palabra con la URL, y se corrigen con el nombre del plato sacado de ella: `Canelones de ricota (¡Listos en 30 minutos!)`. El original se guarda en `original_title`.
+
+**5. Preprocesado.** spaCy → n-gramas → diccionario, como el notebook, con estas adaptaciones al español:
+- modelo `es_core_news_md` (el pequeño lematizaba mal: «cebolla» → `cebollo`);
+- minúsculas antes de spaCy, para que «Arepas» y «arepas» den el mismo lema;
+- sin tildes en los lemas, para que `limon` case con `limón`;
+- se quitan las etiquetas del fragmento y se separan los verbos con pronombre (`hacer el` → `hacer`);
+- stopwords de spaCy más una lista corta del dominio (nunca ingredientes).
+
+Parámetros del notebook: `Phrases(min_count=2, threshold=20)` y `filter_extremes(no_below=4, no_above=0.80)`. Resultado: ~96 lemas por receta y un diccionario de 11.201 términos.
+
+**6. Consultas de prueba.** Cada consulta describe una única receta relevante (como en el notebook), generada con un LLM local a partir de 100 recetas al azar (`SEED = 42`).
+- **Modelo: `qwen3.5:9b-q4_K_M`** (Ollama). Lo comparamos con `gemma4:12b-it-q4_K_M` sobre las mismas 10 recetas: Qwen fue más preciso y específico (Gemma daba consultas vagas, como «guiso de legumbres con marisco») y más rápido (6,8 frente a 10,8 s por consulta), con un solapamiento similar (66 % frente a 60 %) y ninguna copia literal en ninguno de los dos. Resultados en [`results/query_model_selection/`](results/query_model_selection/).
+- **Cinco tipos de consulta**, 20 de cada, basados en los casos de uso del chatbot: `busqueda` (frase sin verbo), `ingredientes`, `duda` sobre un detalle de la receta, `restriccion` (dieta, técnica u ocasión) y `compra`. Cada consulta guarda su tipo para analizar los resultados por tipo. Los casos con varias recetas correctas (comparar, sustituciones) o ninguna (preguntas sin respuesta) quedan para el Hito 2.
+- **Para no favorecer a TF-IDF y BM25:** el prompt prohíbe copiar el título o frases de la receta y pide describir con otras palabras, manteniendo rasgos que identifiquen la receta.
+- **Revisión manual** apoyada en métricas: % de lemas copiados, palabras seguidas copiadas y longitud. Las consultas vagas no saltan ningún aviso: hay que leerlas.
+
+### Siguientes pasos: generar `queries.jsonl`
+Con Ollama abierto:
 ```bash
-python src/download.py
-python src/build_collection.py
-python src/preprocess.py --n-process 4
+ollama pull qwen3.5:9b-q4_K_M
+python src/generate_queries.py --model qwen3.5:9b-q4_K_M --output data/queries_candidates.jsonl
 ```
+Revisad `data/queries_candidates.jsonl` a mano: `"discard": true` en las consultas que copien la receta o sean ambiguas (o corregid `query`). Después:
+```bash
+python src/generate_queries.py --finalize data/queries_candidates.jsonl
+```
+Subid al repo `data/queries_candidates.jsonl` y `queries.jsonl`.
 
-## Pasos realizados y decisiones
-
-### 1. Descarga del dataset
-- **Fuente:** [`somosnlp/recetas-cocina`](https://huggingface.co/datasets/somosnlp/recetas-cocina) (licencia MIT), 28.238 recetas con columnas `title`, `url`, `ingredients`, `steps`, `uuid`.
-- **Versión fijada** (commit `4946898c…`) y verificación con SHA-256: los `doc_id` dependen del orden de las filas, así que la descarga tiene que ser siempre idéntica.
-- **El CSV no se sube al repo** (40 MB, se regenera con el script).
-
-### 2. Filtrado
-| Paso | Recetas | Motivo |
-|---|---|---|
-| CSV original | 28.238 | |
-| Quitar `title`, `ingredients` o `steps` nulos | 22.640 | Elimina recetas.com entero (sin títulos) |
-| Deduplicar por (`ingredients`, `steps`) | 19.410 | Misma receta publicada varias veces |
-| Conservar ≤ 400 palabras | **17.505** | Límite superior del fragmento recomendado (200–400); conserva el 90,2 % |
-
-No usamos la columna `uuid` (falta en 1.286 filas); asignamos IDs propios.
-
-### 3. Unidad de indexación
-- **Documento = receta = un único fragmento.** Con el filtro de 400 palabras no hace falta trocear.
-- **IDs:** `doc_00001`… en el orden del CSV tras el filtrado; `chunk_id` = `{doc_id}_c00`.
-- **Texto del fragmento:** `Receta: {title}` / `Ingredientes: …` / `Preparación: …`, con los espacios en blanco normalizados (`\r\n`, `\xa0`, espacios múltiples).
-- **Salida:** `data/processed/chunks.jsonl` (campos `doc_id`, `chunk_id`, `title`, `original_title`, `url`, `text`). **Es la colección de trabajo** y **sí se sube al repo** una vez cerrada (~26 MB), porque es la referencia de los `relevant_ids` de las consultas. Su generación es determinista.
-
-### 4. Títulos genéricos
-- **Problema:** ~7 % de las recetas tienen como título un eslogan sin el nombre del plato (`"¡Receta FÁCIL y RÁPIDA!"`, `"¡Para chuparse los dedos!"`). El nombre real solo está en la URL (`receta-de-empanada-calabresa-76474.html`).
-- **Detección:** el título es genérico si no comparte ninguna palabra significativa con la URL (sin tildes, sin stopwords y sin adjetivos genéricos como «fácil» o «casera»). Lo preferimos a una lista de eslóganes porque es imposible prever todos: la lista detectaba 515 casos y esta regla 1.238. Revisando una muestra de 60, todos eran genéricos o, como mucho, descripciones parciales.
-- **Corrección:** `{Nombre del plato} ({título original})`, p. ej. `Canelones de ricota (¡Listos en 30 minutos!)`. Se conserva el eslogan porque a veces aporta información (ingredientes, sinónimos).
-- **Tildes:** las URL no llevan tildes; se recuperan buscando cada palabra en el texto de la propia receta (`lacon` → `lacón`).
-- **Resultado:** 1.238 títulos corregidos (1.236 de recetasgratis, 2 de Nestlé). El título original se guarda en `original_title`.
-
-### 5. Preprocesado
-Sigue el notebook (spaCy → n-gramas → diccionario) con estas adaptaciones al español:
-- **Modelo `es_core_news_md`** en lugar del pequeño: lematiza bastante mejor (con el pequeño, «cebolla» salía como `cebollo` y «chorizo» como `choracer`).
-- **Minúsculas antes de spaCy:** con mayúscula spaCy toma la palabra por un nombre propio y no la lematiza («Arepas» → `arepas`), mientras que el usuario escribe en minúsculas («arepas» → `arepa`). Así recetas y consultas se tratan igual.
-- **Tildes:** después de lematizar se quitan las tildes (á é í ó ú) y la diéresis (ü) de cada lema, tanto en las recetas como en las consultas. Así una consulta escrita sin tildes (`tarta de limon`) encuentra recetas escritas con ellas (`limón`).
-- **Etiquetas del fragmento** («Receta:», «Ingredientes:», «Preparación:»): se quitan antes de lematizar, porque están en todas las recetas y no aportan nada.
-- **Verbos con pronombre** («hacerlo»): spaCy da un lema con espacio (`hacer el`); se separa y se queda solo el verbo (`hacer`).
-- **Stopwords:** las de spaCy más una lista corta del dominio («receta», «ingrediente», «fácil», «rápido», «delicioso», «casero», «saludable», «tradicional»). Nunca ingredientes.
-- **Parámetros del notebook:** `Phrases(min_count=2, threshold=20)` y `filter_extremes(no_below=4, no_above=0.80)`.
-- **Resultado:** ~96 lemas por receta; ~7.000 n-gramas (`aceite_oliva`, `diente_ajo`, `zumo_limon`…); diccionario de 31.762 → 11.201 términos. Ninguna palabra supera el 80 % de recetas (la más frecuente, «sal», está en el 65 %).
-- **Limitación conocida:** el lematizador comete algunos errores (`hirveir`, `ensalado`), pero como recetas y consultas pasan por el mismo proceso, se equivoca igual en ambas.
-- Las salidas (`tokens.jsonl`, `phrases.model`, `dictionary.dict`) no se suben al repo: se regeneran en ~1,5 min.
-
-## Estructura del repositorio
+## Estructura
 ```
 data/
-  dataset.csv          # CSV original (no se sube al repositorio)
-  processed/
-    chunks.jsonl       # colección de trabajo (se sube al repositorio)
-src/                   # scripts del pipeline
-notebooks/             # exploración y resultados
-queries.jsonl          # consultas de prueba (Hito 1)
-MILESTONE_1.md         # entregable del Hito 1
-requirements.txt
+  dataset.csv              # CSV original (no se sube)
+  processed/chunks.jsonl   # colección de trabajo (se sube)
+  queries_candidates.jsonl # consultas generadas y revisadas (se sube)
+results/                   # resultados que justifican decisiones
+src/                       # scripts del pipeline
+notebooks/                 # exploración y resultados
+queries.jsonl              # consultas de prueba (entregable)
+MILESTONE_1.md             # entregable del Hito 1
 ```

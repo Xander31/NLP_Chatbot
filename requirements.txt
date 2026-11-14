@@ -2,7 +2,6 @@
 
 # Datos
 pandas>=2.2
-datasets>=3.0
 huggingface_hub        # src/download.py descarga el CSV con hf_hub_download
 
 # Preprocesado
@@ -12,6 +11,9 @@ gensim>=4.3.3          # Phrases, Dictionary, TfidfModel, SparseMatrixSimilarity
 
 # Recuperación
 bm25s>=0.2
+
+# Consultas de prueba (llamadas a Ollama en local)
+requests
 
 # Notebooks
 ipykernel
