@@ -52,17 +52,14 @@ Parámetros del notebook: `Phrases(min_count=2, threshold=20)` y `filter_extreme
 - **Para no favorecer a TF-IDF y BM25:** el prompt prohíbe copiar el título o frases de la receta y pide describir con otras palabras, manteniendo rasgos que identifiquen la receta.
 - **Revisión manual** apoyada en métricas: % de lemas copiados, palabras seguidas copiadas y longitud. Las consultas vagas no saltan ningún aviso: hay que leerlas.
 
-### Siguientes pasos: generar `queries.jsonl`
-Con Ollama abierto:
-```bash
-ollama pull qwen3.5:9b-q4_K_M
-python src/generate_queries.py --model qwen3.5:9b-q4_K_M --output data/queries_candidates.jsonl
-```
-Revisad `data/queries_candidates.jsonl` a mano: `"discard": true` en las consultas que copien la receta o sean ambiguas (o corregid `query`). Después:
+### Siguientes pasos: crear `queries.jsonl`
+Las 100 consultas candidatas ya están generadas en `data/queries_candidates.jsonl`, así que no hace falta instalar Ollama. Resumen: solapamiento medio del 66 % (83 % en `busqueda`, esperable porque nombran el plato), 11 con copia literal y 34 marcadas para revisar.
+
+Revisadlas a mano: `"discard": true` en las que copien la receta o sean ambiguas, o corregid `query`. Los avisos (`flags`) orientan, pero no obligan a descartar. Después:
 ```bash
 python src/generate_queries.py --finalize data/queries_candidates.jsonl
 ```
-Subid al repo `data/queries_candidates.jsonl` y `queries.jsonl`.
+y subid al repo `data/queries_candidates.jsonl` y `queries.jsonl`.
 
 ## Estructura
 ```
