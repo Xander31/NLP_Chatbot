@@ -7,7 +7,7 @@ huggingface_hub        # src/download.py descarga el CSV con hf_hub_download
 
 # Preprocesado
 spacy>=3.8,<3.9
-es_core_news_sm @ https://github.com/explosion/spacy-models/releases/download/es_core_news_sm-3.8.0/es_core_news_sm-3.8.0-py3-none-any.whl
+es_core_news_md @ https://github.com/explosion/spacy-models/releases/download/es_core_news_md-3.8.0/es_core_news_md-3.8.0-py3-none-any.whl
 gensim>=4.3.3          # Phrases, Dictionary, TfidfModel, SparseMatrixSimilarity
 
 # Recuperación

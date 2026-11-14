@@ -13,7 +13,7 @@ Seguimos el notebook de referencia del profesor (*Text Vectorization I*, secció
 git clone <URL del repo> && cd NLP_chatbot
 conda create -n pln python=3.12 -y      # Python 3.12: gensim y spaCy tienen wheels
 conda activate pln
-pip install -r requirements.txt         # incluye el modelo es_core_news_sm de spaCy
+pip install -r requirements.txt         # incluye el modelo es_core_news_md de spaCy
 ```
 
 En VS Code, seleccionad el intérprete/kernel `pln`.
@@ -26,7 +26,7 @@ Cada paso es un script reproducible que se ejecuta desde la raíz del repo:
 |---|---|---|---|
 | 1 | `src/download.py` | Hugging Face → `data/dataset.csv` | ✅ |
 | 2 | `src/build_collection.py` | `data/dataset.csv` → `data/processed/chunks.jsonl` | ✅ |
-| 3 | `src/preprocess.py` | spaCy + n-gramas + diccionario | ⏳ |
+| 3 | `src/preprocess.py` | `chunks.jsonl` → `tokens.jsonl`, `phrases.model`, `dictionary.dict` | ✅ |
 | 4 | `src/generate_queries.py` | muestreo + LLM → `queries.jsonl` | ⏳ |
 | 5 | `src/retrieval.py` | TF-IDF y BM25 | ⏳ |
 | 6 | `src/evaluate.py` | Recall@K y MRR | ⏳ |
@@ -34,6 +34,7 @@ Cada paso es un script reproducible que se ejecuta desde la raíz del repo:
 ```bash
 python src/download.py
 python src/build_collection.py
+python src/preprocess.py --n-process 4
 ```
 
 ## Pasos realizados y decisiones
@@ -66,8 +67,18 @@ No usamos la columna `uuid` (falta en 1.286 filas); asignamos IDs propios.
 - **Tildes:** las URL no llevan tildes; se recuperan buscando cada palabra en el texto de la propia receta (`lacon` → `lacón`).
 - **Resultado:** 1.238 títulos corregidos (1.236 de recetasgratis, 2 de Nestlé). El título original se guarda en `original_title`.
 
-### 5. Preprocesado (en curso)
-- **Tildes:** después de lematizar con spaCy se quitan las tildes (á é í ó ú) y la diéresis (ü) de cada lema, tanto en las recetas como en las consultas. Así una consulta escrita sin tildes (`tarta de limon`) encuentra recetas escritas con ellas (`limón`). Es una adaptación al español que el notebook no necesita, porque trabaja en inglés.
+### 5. Preprocesado
+Sigue el notebook (spaCy → n-gramas → diccionario) con estas adaptaciones al español:
+- **Modelo `es_core_news_md`** en lugar del pequeño: lematiza bastante mejor (con el pequeño, «cebolla» salía como `cebollo` y «chorizo» como `choracer`).
+- **Minúsculas antes de spaCy:** con mayúscula spaCy toma la palabra por un nombre propio y no la lematiza («Arepas» → `arepas`), mientras que el usuario escribe en minúsculas («arepas» → `arepa`). Así recetas y consultas se tratan igual.
+- **Tildes:** después de lematizar se quitan las tildes (á é í ó ú) y la diéresis (ü) de cada lema, tanto en las recetas como en las consultas. Así una consulta escrita sin tildes (`tarta de limon`) encuentra recetas escritas con ellas (`limón`).
+- **Etiquetas del fragmento** («Receta:», «Ingredientes:», «Preparación:»): se quitan antes de lematizar, porque están en todas las recetas y no aportan nada.
+- **Verbos con pronombre** («hacerlo»): spaCy da un lema con espacio (`hacer el`); se separa y se queda solo el verbo (`hacer`).
+- **Stopwords:** las de spaCy más una lista corta del dominio («receta», «ingrediente», «fácil», «rápido», «delicioso», «casero», «saludable», «tradicional»). Nunca ingredientes.
+- **Parámetros del notebook:** `Phrases(min_count=2, threshold=20)` y `filter_extremes(no_below=4, no_above=0.80)`.
+- **Resultado:** ~96 lemas por receta; ~7.000 n-gramas (`aceite_oliva`, `diente_ajo`, `zumo_limon`…); diccionario de 31.762 → 11.201 términos. Ninguna palabra supera el 80 % de recetas (la más frecuente, «sal», está en el 65 %).
+- **Limitación conocida:** el lematizador comete algunos errores (`hirveir`, `ensalado`), pero como recetas y consultas pasan por el mismo proceso, se equivoca igual en ambas.
+- Las salidas (`tokens.jsonl`, `phrases.model`, `dictionary.dict`) no se suben al repo: se regeneran en ~1,5 min.
 
 ## Estructura del repositorio
 ```
