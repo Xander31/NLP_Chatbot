@@ -10,7 +10,7 @@ recuperación → evaluación.
     equivocadas. Por eso descargamos siempre el mismo commit del repositorio y
     comprobamos con un hash (SHA-256) que el fichero es idéntico byte a byte.
 
-Uso (desde la raíz del repo, con el entorno `pln` activado):
+Uso (desde la raíz del repo, con el entorno `.venv` activado):
     python src/download.py                       # guarda en data/dataset.csv
     python src/download.py --output otra/ruta.csv
 """

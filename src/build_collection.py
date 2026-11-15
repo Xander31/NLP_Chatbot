@@ -20,7 +20,7 @@ Resultado esperado: 28.238 → 22.640 → 19.410 → 17.505 recetas, con 1.238
 títulos corregidos. La salida es determinista: cada ejecución produce el mismo
 fichero (mismo SHA-256).
 
-Uso (desde la raíz del repo, con el entorno `pln` activado):
+Uso (desde la raíz del repo, con el entorno `.venv` activado):
     python src/build_collection.py
     python src/build_collection.py --input data/dataset.csv --output data/processed/chunks.jsonl
 

@@ -2,18 +2,19 @@
 
 Proyecto de PLN (Máster en IA Aplicada, UC3M): chatbot que responde preguntas sobre **recetas de cocina en español** citando las recetas en que se basa.
 
-- **Hito 1 (en curso):** baseline de recuperación con TF-IDF y BM25, evaluado con Recall@K y MRR.
+- **Hito 1 (hecho):** baseline de recuperación con TF-IDF y BM25, evaluado con Recall@K y MRR. Ver [`MILESTONE_1.md`](MILESTONE_1.md) y [`notebooks/Milestone_1.ipynb`](notebooks/Milestone_1.ipynb).
 - **Hito 2:** RAG (embeddings densos + LLM que cita) comparado con el baseline, con la misma unidad de indexación.
 
 Seguimos el notebook del profesor (*Text Vectorization I*, sección 4) siempre que es posible; las desviaciones se justifican abajo y en `MILESTONE_1.md`.
 
 ## Puesta en marcha
+Con [uv](https://docs.astral.sh/uv/), desde la raíz del repo:
 ```bash
-conda create -n pln python=3.12 -y
-conda activate pln
-pip install -r requirements.txt
+uv venv --python 3.12
+uv pip install -r requirements.txt
+.venv\Scripts\activate        # en Linux o macOS: source .venv/bin/activate
 ```
-En VS Code, seleccionad el intérprete `pln`. Para generar consultas hace falta además [Ollama](https://ollama.com/download).
+En VS Code hay que seleccionar el intérprete de `.venv`. Para volver a generar las consultas hace falta además [Ollama](https://ollama.com/download).
 
 ## Pipeline
 | # | Script | Salida | Estado |
@@ -21,9 +22,9 @@ En VS Code, seleccionad el intérprete `pln`. Para generar consultas hace falta 
 | 1 | `src/download.py` | `data/dataset.csv` | ✅ |
 | 2 | `src/build_collection.py` | `data/processed/chunks.jsonl` | ✅ |
 | 3 | `src/preprocess.py --n-process 4` | `tokens.jsonl`, `phrases.model`, `dictionary.dict` | ✅ |
-| 4 | `src/generate_queries.py` | `queries.jsonl` | 🔄 |
-| 5 | `src/retrieval.py` | TF-IDF y BM25 | ⏳ |
-| 6 | `src/evaluate.py` | Recall@K y MRR | ⏳ |
+| 4 | `src/generate_queries.py --model …` y luego `--finalize …` | `data/queries_candidates.jsonl` y `queries.jsonl` | ✅ |
+| 5 | `src/retrieval.py "consulta"` | Búsqueda con TF-IDF y BM25 | ✅ |
+| 6 | `src/evaluate.py` | Recall@K y MRR, `results/evaluation/per_query.csv` | ✅ |
 
 Todos los scripts se ejecutan desde la raíz del repo y son deterministas.
 
@@ -50,16 +51,15 @@ Parámetros del notebook: `Phrases(min_count=2, threshold=20)` y `filter_extreme
 - **Modelo: `qwen3.5:9b-q4_K_M`** (Ollama). Lo comparamos con `gemma4:12b-it-q4_K_M` sobre las mismas 10 recetas: Qwen fue más preciso y específico (Gemma daba consultas vagas, como «guiso de legumbres con marisco») y más rápido (6,8 frente a 10,8 s por consulta), con un solapamiento similar (66 % frente a 60 %) y ninguna copia literal en ninguno de los dos. Resultados en [`results/query_model_selection/`](results/query_model_selection/).
 - **Cinco tipos de consulta**, 20 de cada, basados en los casos de uso del chatbot: `busqueda` (frase sin verbo), `ingredientes`, `duda` sobre un detalle de la receta, `restriccion` (dieta, técnica u ocasión) y `compra`. Cada consulta guarda su tipo para analizar los resultados por tipo. Los casos con varias recetas correctas (comparar, sustituciones) o ninguna (preguntas sin respuesta) quedan para el Hito 2.
 - **Para no favorecer a TF-IDF y BM25:** el prompt prohíbe copiar el título o frases de la receta y pide describir con otras palabras, manteniendo rasgos que identifiquen la receta.
-- **Revisión manual** apoyada en métricas: % de lemas copiados, palabras seguidas copiadas y longitud. Las consultas vagas no saltan ningún aviso: hay que leerlas.
+- **Revisión** apoyada en métricas: % de lemas copiados, palabras seguidas copiadas y longitud. Las consultas vagas no saltan ningún aviso: hay que leerlas. Claude hizo una primera revisión de las 100 consultas y después revisamos a mano muchas de ellas.
+- **Resultado de la revisión:** quedan **65** consultas en `queries.jsonl`. De las 35 descartadas, 34 son ambiguas (otra receta responde igual de bien) y 1 pregunta un dato que la receta no contiene; 2 de las ambiguas tienen además ese segundo problema. Detalle en [`results/query_review/revision_consultas.md`](results/query_review/revision_consultas.md).
 
-### Siguientes pasos: crear `queries.jsonl`
-Las 100 consultas candidatas ya están generadas en `data/queries_candidates.jsonl`, así que no hace falta instalar Ollama. Resumen: solapamiento medio del 66 % (83 % en `busqueda`, esperable porque nombran el plato), 11 con copia literal y 34 marcadas para revisar.
+**7. Recuperación y evaluación.** TF-IDF con similitud coseno (gensim) y BM25 (`bm25s`, variante `lucene`, `k1 = 1.5`, `b = 0.75`). La evaluación es a nivel de documento, sobre los 10 primeros resultados.
 
-Revisadlas a mano: `"discard": true` en las que copien la receta o sean ambiguas, o corregid `query`. Los avisos (`flags`) orientan, pero no obligan a descartar. Después:
-```bash
-python src/generate_queries.py --finalize data/queries_candidates.jsonl
-```
-y subid al repo `data/queries_candidates.jsonl` y `queries.jsonl`.
+| Método | Recall@5 | Recall@10 | MRR |
+|---|---|---|---|
+| TF-IDF | 0,692 | 0,785 | 0,588 |
+| BM25 | 0,923 | 0,954 | 0,805 |
 
 ## Estructura
 ```
@@ -69,7 +69,7 @@ data/
   queries_candidates.jsonl # consultas generadas y revisadas (se sube)
 results/                   # resultados que justifican decisiones
 src/                       # scripts del pipeline
-notebooks/                 # exploración y resultados
+notebooks/Milestone_1.ipynb # todo el Hito 1 paso a paso, ejecutado
 queries.jsonl              # consultas de prueba (entregable)
 MILESTONE_1.md             # entregable del Hito 1
 ```

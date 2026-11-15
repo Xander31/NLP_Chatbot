@@ -17,3 +17,5 @@ requests
 
 # Notebooks
 ipykernel
+matplotlib
+nbconvert             # para ejecutar el notebook desde la terminal

@@ -1,0 +1,66 @@
+qid,query_type,rank_tfidf,rank_bm25,query
+q002,ingredientes,1,1,"¿Qué puedo preparar con tilapia, galletas saladas y pepinillos para una hamburguesa de pescado?"
+q004,compra,1,2,¿qué ingredientes necesito para hacer un guiso cremoso de garbanzos con gambas y azafrán?
+q005,busqueda,4,1,"tortilla babosa de criadillas, sesos y vino blanco"
+q006,restriccion,1,1,busco un aperitivo de chorizo cocido en vino fino con laurel que quede jugoso
+q007,duda,,1,¿Cuánto tiempo hay que cocer el arroz con seitán y especias para que quede perfecto?
+q011,restriccion,2,1,busco unas flautas mexicanas rellenas de puré de papa y chorizo frito con salsa verde
+q013,duda,1,1,¿Cómo preparo el huevo dentro del pan con agujero y aguacate machacado?
+q014,busqueda,2,1,tortilla de acelgas horneada ligera con queso
+q016,ingredientes,1,1,"¿Qué puedo preparar con lengua, tortillas taqueras y hierbas aromáticas para un antojo mexicano?"
+q018,restriccion,,,busco un postre ligero de chocolate sin azúcar ni lácteos que requiera batir claras a punto de nieve
+q019,compra,1,1,¿qué ingredientes necesito para hacer los huevos revueltos con curry y jengibre para cuatro personas?
+q021,compra,3,3,¿qué ingredientes necesito para hacer los dulces de maíz crujientes con caramelo de piloncillo?
+q022,restriccion,,6,busco un postre crujiente de hojaldre con guayaba que parezca chicharrones y se hornee rápido
+q023,duda,1,1,¿Cómo preparo el jugo detox naranja con jengibre y caqui si queda muy espeso?
+q024,busqueda,,1,"pay frío con base de galleta María, crema de queso y trozos de piña"
+q025,ingredientes,1,1,"¿Qué plato puedo preparar con trucha, avellanas y almendras cocinándola al microondas?"
+q026,duda,,5,¿cuánto tiempo hay que hornear los pajaritos esponjosos con merengue para que queden dorados?
+q027,ingredientes,1,1,"¿Qué guiso puedo hacer con ternera, panceta, pasas y oporto para un plato dulce-salado?"
+q028,busqueda,1,1,"tortitas de arroz integral veganas rellenas de rúcula, champiñones y hummus"
+q029,restriccion,,4,busco filetes de pescado al vapor con jengibre y champiñones
+q030,compra,,4,¿qué ingredientes necesito para hacer el risotto cremoso de quinoa con setas y calabaza?
+q031,ingredientes,4,1,"¿qué puedo preparar con espárragos trigueros, arroz carnaroli y parmesano para un plato cremoso?"
+q033,busqueda,,1,"arroz blanco mezclado con habichuelas rosadas, tocino y jamón"
+q035,compra,1,1,¿qué ingredientes necesito para preparar lomos de merluza al ajillo con vino blanco y guindilla?
+q036,compra,1,1,¿qué ingredientes necesito para hacer camarones en salsa cremosa con curry y comino?
+q037,busqueda,1,1,"pinchos crujientes de salchicha, queso y pimiento envueltos en tocino"
+q038,ingredientes,1,1,"¿qué plato frío puedo hacer con bacalao desmenuzado, aguacate y lechuga para un almuerzo ligero?"
+q039,duda,8,1,¿Cuánto tiempo se cocina la pulpeta con huevo duro y vino blanco a fuego lento?
+q041,compra,1,1,¿qué ingredientes necesito para hacer rollitos tailandeses rellenos de verduras con masa de primavera y salsa de soja?
+q042,restriccion,,,"busco una pasta cremosa con setas y pimentón ahumado, ideal para cenar rápido"
+q043,busqueda,1,1,compota de manzana dorada con canela y piel de naranja
+q044,duda,,5,¿Cuánto tiempo debo cocer las patatas para esta ensalada con salchichas y guisantes?
+q048,ingredientes,1,1,"¿Qué plato puedo hacer con penne, panceta crujiente y brócoli para un almuerzo rápido?"
+q049,busqueda,1,1,paté cremoso de castañas con champiñones y tofu
+q050,restriccion,1,1,"busco una tortilla vasca jugosa con bacalao, verduras y guindilla"
+q052,ingredientes,1,1,"¿Qué puedo preparar con yogur natural, miel y vainilla para un postre refrescante?"
+q053,busqueda,2,1,torta húmeda de pera con trozos visibles y acabado crujiente por azúcar glass
+q054,duda,1,1,¿Cuánto tiempo hay que cocer las almejas con el tomate antes de añadir la coliflor frita?
+q057,restriccion,1,1,busco golosinas de gelatina con forma de ojo azul y blanco ideales para Halloween
+q058,ingredientes,1,1,"¿Qué puedo preparar con harina integral, cacao y dulce de leche para un desayuno dulce?"
+q059,busqueda,1,1,caldereta de panga con tomate y guindilla
+q060,compra,1,1,¿qué ingredientes necesito para hacer una ensaladilla rusa con langostinos en copas?
+q062,ingredientes,4,1,"¿Qué cóctel refrescante con curaçao azul, vodka y ginebra puedo preparar para una fiesta?"
+q063,restriccion,2,1,"busco un puré cremoso con jamón, parmesano y huevos gratinados al horno"
+q065,compra,2,1,¿qué ingredientes necesito para preparar un ponche refrescante de frutas con cáscaras decoradas para seis niños?
+q066,restriccion,1,1,busco una sopa fría de melón con menta y granizado de naranja para servir en verano
+q067,busqueda,1,1,pudín de mandarina con bizcochos remojados en leche y licor
+q068,duda,9,1,¿cuánto tiempo hay que cocer los berberechos limpios con arroz para que el grano quede tierno?
+q069,ingredientes,,3,"¿Qué receta puedo preparar con zanahoria rallada, crema de leche y cebolla salteada?"
+q072,compra,1,1,"¿qué ingredientes necesito para preparar un desayuno inglés con muffin, jamón ahumado y salsa cremosa?"
+q073,restriccion,6,3,"busco un sándwich casero con pan tostado, mantequilla de maní casera y rodajas de plátano"
+q074,ingredientes,3,2,"¿Qué receta se hace con lubina, laurel y limón al horno?"
+q075,busqueda,8,1,torta húmeda de chocolate con remolacha y licor de almendras
+q077,duda,,,¿cuánto tiempo se fríen los tomates dados antes de añadirlos a la quiche?
+q079,busqueda,1,1,atún salteado con cebolla roja y vinagre de jerez para acompañar arroz
+q084,duda,1,1,¿A qué temperatura y durante cuánto tiempo hay que freír las chuletas de cerdo empanadas con salsa de queso?
+q085,restriccion,4,2,"busco un cóctel refrescante de gambas grandes con mayonesa, cebolla roja y toque picante"
+q086,busqueda,4,4,costillas de cerdo horneadas con salsa barbacoa casera y coca-cola
+q087,restriccion,1,1,busco un guiso vegetariano casero con lentejas amarillas y arroz que quede cremoso
+q088,compra,1,1,¿qué ingredientes necesito para preparar camarones fritos picantes con ajo y chile estilo Guerrero?
+q090,duda,1,1,¿Cuánto tiempo se hornea el pay de manzana con mermelada y trocitos de mantequilla a 350 grados?
+q093,duda,,3,¿Cuánto tiempo hay que hornear el lomo marinado antes de añadir la salsa de durazno?
+q095,busqueda,8,1,berenjenas rellenas de champiñones con cebolla caramelizada y queso gratinado
+q096,busqueda,,6,"Arroz con lentejas, cebolla caramelizada y piñones"
+q099,restriccion,7,1,"busco un sándwich con solomillo asado al horno, alioli y toques de hierbas aromáticas"

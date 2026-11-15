@@ -1,0 +1,65 @@
+{"qid": "q002", "query": "¿Qué puedo preparar con tilapia, galletas saladas y pepinillos para una hamburguesa de pescado?", "relevant_ids": ["doc_00820"], "source_chunk": "doc_00820_c00", "query_type": "ingredientes"}
+{"qid": "q004", "query": "¿qué ingredientes necesito para hacer un guiso cremoso de garbanzos con gambas y azafrán?", "relevant_ids": ["doc_08025"], "source_chunk": "doc_08025_c00", "query_type": "compra"}
+{"qid": "q005", "query": "tortilla babosa de criadillas, sesos y vino blanco", "relevant_ids": ["doc_07315"], "source_chunk": "doc_07315_c00", "query_type": "busqueda"}
+{"qid": "q006", "query": "busco un aperitivo de chorizo cocido en vino fino con laurel que quede jugoso", "relevant_ids": ["doc_04573"], "source_chunk": "doc_04573_c00", "query_type": "restriccion"}
+{"qid": "q007", "query": "¿Cuánto tiempo hay que cocer el arroz con seitán y especias para que quede perfecto?", "relevant_ids": ["doc_03359"], "source_chunk": "doc_03359_c00", "query_type": "duda"}
+{"qid": "q011", "query": "busco unas flautas mexicanas rellenas de puré de papa y chorizo frito con salsa verde", "relevant_ids": ["doc_00977"], "source_chunk": "doc_00977_c00", "query_type": "restriccion"}
+{"qid": "q013", "query": "¿Cómo preparo el huevo dentro del pan con agujero y aguacate machacado?", "relevant_ids": ["doc_07165"], "source_chunk": "doc_07165_c00", "query_type": "duda"}
+{"qid": "q014", "query": "tortilla de acelgas horneada ligera con queso", "relevant_ids": ["doc_07624"], "source_chunk": "doc_07624_c00", "query_type": "busqueda"}
+{"qid": "q016", "query": "¿Qué puedo preparar con lengua, tortillas taqueras y hierbas aromáticas para un antojo mexicano?", "relevant_ids": ["doc_00870"], "source_chunk": "doc_00870_c00", "query_type": "ingredientes"}
+{"qid": "q018", "query": "busco un postre ligero de chocolate sin azúcar ni lácteos que requiera batir claras a punto de nieve", "relevant_ids": ["doc_13747"], "source_chunk": "doc_13747_c00", "query_type": "restriccion"}
+{"qid": "q019", "query": "¿qué ingredientes necesito para hacer los huevos revueltos con curry y jengibre para cuatro personas?", "relevant_ids": ["doc_07224"], "source_chunk": "doc_07224_c00", "query_type": "compra"}
+{"qid": "q021", "query": "¿qué ingredientes necesito para hacer los dulces de maíz crujientes con caramelo de piloncillo?", "relevant_ids": ["doc_09116"], "source_chunk": "doc_09116_c00", "query_type": "compra"}
+{"qid": "q022", "query": "busco un postre crujiente de hojaldre con guayaba que parezca chicharrones y se hornee rápido", "relevant_ids": ["doc_00213"], "source_chunk": "doc_00213_c00", "query_type": "restriccion"}
+{"qid": "q023", "query": "¿Cómo preparo el jugo detox naranja con jengibre y caqui si queda muy espeso?", "relevant_ids": ["doc_05232"], "source_chunk": "doc_05232_c00", "query_type": "duda"}
+{"qid": "q024", "query": "pay frío con base de galleta María, crema de queso y trozos de piña", "relevant_ids": ["doc_13849"], "source_chunk": "doc_13849_c00", "query_type": "busqueda"}
+{"qid": "q025", "query": "¿Qué plato puedo preparar con trucha, avellanas y almendras cocinándola al microondas?", "relevant_ids": ["doc_11150"], "source_chunk": "doc_11150_c00", "query_type": "ingredientes"}
+{"qid": "q026", "query": "¿cuánto tiempo hay que hornear los pajaritos esponjosos con merengue para que queden dorados?", "relevant_ids": ["doc_09106"], "source_chunk": "doc_09106_c00", "query_type": "duda"}
+{"qid": "q027", "query": "¿Qué guiso puedo hacer con ternera, panceta, pasas y oporto para un plato dulce-salado?", "relevant_ids": ["doc_05095"], "source_chunk": "doc_05095_c00", "query_type": "ingredientes"}
+{"qid": "q028", "query": "tortitas de arroz integral veganas rellenas de rúcula, champiñones y hummus", "relevant_ids": ["doc_07056"], "source_chunk": "doc_07056_c00", "query_type": "busqueda"}
+{"qid": "q029", "query": "busco filetes de pescado al vapor con jengibre y champiñones", "relevant_ids": ["doc_11030"], "source_chunk": "doc_11030_c00", "query_type": "restriccion"}
+{"qid": "q030", "query": "¿qué ingredientes necesito para hacer el risotto cremoso de quinoa con setas y calabaza?", "relevant_ids": ["doc_03350"], "source_chunk": "doc_03350_c00", "query_type": "compra"}
+{"qid": "q031", "query": "¿qué puedo preparar con espárragos trigueros, arroz carnaroli y parmesano para un plato cremoso?", "relevant_ids": ["doc_03040"], "source_chunk": "doc_03040_c00", "query_type": "ingredientes"}
+{"qid": "q033", "query": "arroz blanco mezclado con habichuelas rosadas, tocino y jamón", "relevant_ids": ["doc_03170"], "source_chunk": "doc_03170_c00", "query_type": "busqueda"}
+{"qid": "q035", "query": "¿qué ingredientes necesito para preparar lomos de merluza al ajillo con vino blanco y guindilla?", "relevant_ids": ["doc_11271"], "source_chunk": "doc_11271_c00", "query_type": "compra"}
+{"qid": "q036", "query": "¿qué ingredientes necesito para hacer camarones en salsa cremosa con curry y comino?", "relevant_ids": ["doc_08668"], "source_chunk": "doc_08668_c00", "query_type": "compra"}
+{"qid": "q037", "query": "pinchos crujientes de salchicha, queso y pimiento envueltos en tocino", "relevant_ids": ["doc_01424"], "source_chunk": "doc_01424_c00", "query_type": "busqueda"}
+{"qid": "q038", "query": "¿qué plato frío puedo hacer con bacalao desmenuzado, aguacate y lechuga para un almuerzo ligero?", "relevant_ids": ["doc_15055"], "source_chunk": "doc_15055_c00", "query_type": "ingredientes"}
+{"qid": "q039", "query": "¿Cuánto tiempo se cocina la pulpeta con huevo duro y vino blanco a fuego lento?", "relevant_ids": ["doc_04091"], "source_chunk": "doc_04091_c00", "query_type": "duda"}
+{"qid": "q041", "query": "¿qué ingredientes necesito para hacer rollitos tailandeses rellenos de verduras con masa de primavera y salsa de soja?", "relevant_ids": ["doc_02583"], "source_chunk": "doc_02583_c00", "query_type": "compra"}
+{"qid": "q042", "query": "busco una pasta cremosa con setas y pimentón ahumado, ideal para cenar rápido", "relevant_ids": ["doc_09607"], "source_chunk": "doc_09607_c00", "query_type": "restriccion"}
+{"qid": "q043", "query": "compota de manzana dorada con canela y piel de naranja", "relevant_ids": ["doc_11851"], "source_chunk": "doc_11851_c00", "query_type": "busqueda"}
+{"qid": "q044", "query": "¿Cuánto tiempo debo cocer las patatas para esta ensalada con salchichas y guisantes?", "relevant_ids": ["doc_06301"], "source_chunk": "doc_06301_c00", "query_type": "duda"}
+{"qid": "q048", "query": "¿Qué plato puedo hacer con penne, panceta crujiente y brócoli para un almuerzo rápido?", "relevant_ids": ["doc_09483"], "source_chunk": "doc_09483_c00", "query_type": "ingredientes"}
+{"qid": "q049", "query": "paté cremoso de castañas con champiñones y tofu", "relevant_ids": ["doc_02615"], "source_chunk": "doc_02615_c00", "query_type": "busqueda"}
+{"qid": "q050", "query": "busco una tortilla vasca jugosa con bacalao, verduras y guindilla", "relevant_ids": ["doc_07629"], "source_chunk": "doc_07629_c00", "query_type": "restriccion"}
+{"qid": "q052", "query": "¿Qué puedo preparar con yogur natural, miel y vainilla para un postre refrescante?", "relevant_ids": ["doc_12456"], "source_chunk": "doc_12456_c00", "query_type": "ingredientes"}
+{"qid": "q053", "query": "torta húmeda de pera con trozos visibles y acabado crujiente por azúcar glass", "relevant_ids": ["doc_09109"], "source_chunk": "doc_09109_c00", "query_type": "busqueda"}
+{"qid": "q054", "query": "¿Cuánto tiempo hay que cocer las almejas con el tomate antes de añadir la coliflor frita?", "relevant_ids": ["doc_14858"], "source_chunk": "doc_14858_c00", "query_type": "duda"}
+{"qid": "q057", "query": "busco golosinas de gelatina con forma de ojo azul y blanco ideales para Halloween", "relevant_ids": ["doc_12131"], "source_chunk": "doc_12131_c00", "query_type": "restriccion"}
+{"qid": "q058", "query": "¿Qué puedo preparar con harina integral, cacao y dulce de leche para un desayuno dulce?", "relevant_ids": ["doc_11642"], "source_chunk": "doc_11642_c00", "query_type": "ingredientes"}
+{"qid": "q059", "query": "caldereta de panga con tomate y guindilla", "relevant_ids": ["doc_06866"], "source_chunk": "doc_06866_c00", "query_type": "busqueda"}
+{"qid": "q060", "query": "¿qué ingredientes necesito para hacer una ensaladilla rusa con langostinos en copas?", "relevant_ids": ["doc_08749"], "source_chunk": "doc_08749_c00", "query_type": "compra"}
+{"qid": "q062", "query": "¿Qué cóctel refrescante con curaçao azul, vodka y ginebra puedo preparar para una fiesta?", "relevant_ids": ["doc_05608"], "source_chunk": "doc_05608_c00", "query_type": "ingredientes"}
+{"qid": "q063", "query": "busco un puré cremoso con jamón, parmesano y huevos gratinados al horno", "relevant_ids": ["doc_17503"], "source_chunk": "doc_17503_c00", "query_type": "restriccion"}
+{"qid": "q065", "query": "¿qué ingredientes necesito para preparar un ponche refrescante de frutas con cáscaras decoradas para seis niños?", "relevant_ids": ["doc_05355"], "source_chunk": "doc_05355_c00", "query_type": "compra"}
+{"qid": "q066", "query": "busco una sopa fría de melón con menta y granizado de naranja para servir en verano", "relevant_ids": ["doc_15148"], "source_chunk": "doc_15148_c00", "query_type": "restriccion"}
+{"qid": "q067", "query": "pudín de mandarina con bizcochos remojados en leche y licor", "relevant_ids": ["doc_12434"], "source_chunk": "doc_12434_c00", "query_type": "busqueda"}
+{"qid": "q068", "query": "¿cuánto tiempo hay que cocer los berberechos limpios con arroz para que el grano quede tierno?", "relevant_ids": ["doc_08846"], "source_chunk": "doc_08846_c00", "query_type": "duda"}
+{"qid": "q069", "query": "¿Qué receta puedo preparar con zanahoria rallada, crema de leche y cebolla salteada?", "relevant_ids": ["doc_07197"], "source_chunk": "doc_07197_c00", "query_type": "ingredientes"}
+{"qid": "q072", "query": "¿qué ingredientes necesito para preparar un desayuno inglés con muffin, jamón ahumado y salsa cremosa?", "relevant_ids": ["doc_07506"], "source_chunk": "doc_07506_c00", "query_type": "compra"}
+{"qid": "q073", "query": "busco un sándwich casero con pan tostado, mantequilla de maní casera y rodajas de plátano", "relevant_ids": ["doc_01052"], "source_chunk": "doc_01052_c00", "query_type": "restriccion"}
+{"qid": "q074", "query": "¿Qué receta se hace con lubina, laurel y limón al horno?", "relevant_ids": ["doc_10337"], "source_chunk": "doc_10337_c00", "query_type": "ingredientes"}
+{"qid": "q075", "query": "torta húmeda de chocolate con remolacha y licor de almendras", "relevant_ids": ["doc_13146"], "source_chunk": "doc_13146_c00", "query_type": "busqueda"}
+{"qid": "q077", "query": "¿cuánto tiempo se fríen los tomates dados antes de añadirlos a la quiche?", "relevant_ids": ["doc_02169"], "source_chunk": "doc_02169_c00", "query_type": "duda"}
+{"qid": "q079", "query": "atún salteado con cebolla roja y vinagre de jerez para acompañar arroz", "relevant_ids": ["doc_10312"], "source_chunk": "doc_10312_c00", "query_type": "busqueda"}
+{"qid": "q084", "query": "¿A qué temperatura y durante cuánto tiempo hay que freír las chuletas de cerdo empanadas con salsa de queso?", "relevant_ids": ["doc_04682"], "source_chunk": "doc_04682_c00", "query_type": "duda"}
+{"qid": "q085", "query": "busco un cóctel refrescante de gambas grandes con mayonesa, cebolla roja y toque picante", "relevant_ids": ["doc_08680"], "source_chunk": "doc_08680_c00", "query_type": "restriccion"}
+{"qid": "q086", "query": "costillas de cerdo horneadas con salsa barbacoa casera y coca-cola", "relevant_ids": ["doc_04576"], "source_chunk": "doc_04576_c00", "query_type": "busqueda"}
+{"qid": "q087", "query": "busco un guiso vegetariano casero con lentejas amarillas y arroz que quede cremoso", "relevant_ids": ["doc_08082"], "source_chunk": "doc_08082_c00", "query_type": "restriccion"}
+{"qid": "q088", "query": "¿qué ingredientes necesito para preparar camarones fritos picantes con ajo y chile estilo Guerrero?", "relevant_ids": ["doc_08610"], "source_chunk": "doc_08610_c00", "query_type": "compra"}
+{"qid": "q090", "query": "¿Cuánto tiempo se hornea el pay de manzana con mermelada y trocitos de mantequilla a 350 grados?", "relevant_ids": ["doc_13088"], "source_chunk": "doc_13088_c00", "query_type": "duda"}
+{"qid": "q093", "query": "¿Cuánto tiempo hay que hornear el lomo marinado antes de añadir la salsa de durazno?", "relevant_ids": ["doc_04533"], "source_chunk": "doc_04533_c00", "query_type": "duda"}
+{"qid": "q095", "query": "berenjenas rellenas de champiñones con cebolla caramelizada y queso gratinado", "relevant_ids": ["doc_16172"], "source_chunk": "doc_16172_c00", "query_type": "busqueda"}
+{"qid": "q096", "query": "Arroz con lentejas, cebolla caramelizada y piñones", "relevant_ids": ["doc_02979"], "source_chunk": "doc_02979_c00", "query_type": "busqueda"}
+{"qid": "q099", "query": "busco un sándwich con solomillo asado al horno, alioli y toques de hierbas aromáticas", "relevant_ids": ["doc_05009"], "source_chunk": "doc_05009_c00", "query_type": "restriccion"}

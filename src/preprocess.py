@@ -29,7 +29,7 @@ Salidas (en data/processed/, no versionadas):
   - phrases.model    modelo de n-gramas de gensim
   - dictionary.dict  diccionario de gensim ya filtrado
 
-Uso (desde la raíz del repo, con el entorno `pln` activado):
+Uso (desde la raíz del repo, con el entorno `.venv` activado):
     python src/preprocess.py
     python src/preprocess.py --n-process 4    # varios procesos de spaCy (más rápido)
 """

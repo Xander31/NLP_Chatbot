@@ -242,8 +242,8 @@ def longest_copied_run(query, recipe_text):
 def compute_metrics(query, recipe_text, recipe_lemmas, nlp, stopwords):
     """Métricas de cada consulta:
     - n_words: número de palabras (se pide entre 8 y 20).
-    - lemma_overlap: % de lemas de la consulta que aparecen en la receta (la
-      métrica automática prevista en CLAUDE.md). Muy alto = copia vocabulario,
+    - lemma_overlap: % de lemas de la consulta que aparecen en la receta.
+      Muy alto = copia vocabulario,
       lo que favorece artificialmente a TF-IDF/BM25.
     - longest_copied: palabras seguidas copiadas literalmente de la receta.
     - flags: avisos para la revisión manual.
@@ -347,8 +347,8 @@ def compare(path_a, path_b):
 
 
 def finalize(path):
-    """Escribe queries.jsonl con las candidatas no descartadas. Formato de
-    CLAUDE.md más el campo query_type, para poder analizar los resultados por
+    """Escribe queries.jsonl con las candidatas no descartadas. Formato del
+    enunciado más los campos source_chunk y query_type, para poder analizar los resultados por
     tipo de consulta."""
     rows = read_jsonl(path)
     kept = [r for r in rows if not r.get("discard")]
