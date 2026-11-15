@@ -37,10 +37,12 @@ q050,restriccion,1,1,"busco una tortilla vasca jugosa con bacalao, verduras y gu
 q052,ingredientes,1,1,"¿Qué puedo preparar con yogur natural, miel y vainilla para un postre refrescante?"
 q053,busqueda,2,1,torta húmeda de pera con trozos visibles y acabado crujiente por azúcar glass
 q054,duda,1,1,¿Cuánto tiempo hay que cocer las almejas con el tomate antes de añadir la coliflor frita?
+q056,duda,2,2,¿cuánto tiempo debo dejar remojando la pulpa de tamarindo antes de licuarla?
 q057,restriccion,1,1,busco golosinas de gelatina con forma de ojo azul y blanco ideales para Halloween
 q058,ingredientes,1,1,"¿Qué puedo preparar con harina integral, cacao y dulce de leche para un desayuno dulce?"
 q059,busqueda,1,1,caldereta de panga con tomate y guindilla
 q060,compra,1,1,¿qué ingredientes necesito para hacer una ensaladilla rusa con langostinos en copas?
+q061,busqueda,2,1,arepa venezolana rellena de queso hecha en plancha
 q062,ingredientes,4,1,"¿Qué cóctel refrescante con curaçao azul, vodka y ginebra puedo preparar para una fiesta?"
 q063,restriccion,2,1,"busco un puré cremoso con jamón, parmesano y huevos gratinados al horno"
 q065,compra,2,1,¿qué ingredientes necesito para preparar un ponche refrescante de frutas con cáscaras decoradas para seis niños?
@@ -48,6 +50,7 @@ q066,restriccion,1,1,busco una sopa fría de melón con menta y granizado de nar
 q067,busqueda,1,1,pudín de mandarina con bizcochos remojados en leche y licor
 q068,duda,9,1,¿cuánto tiempo hay que cocer los berberechos limpios con arroz para que el grano quede tierno?
 q069,ingredientes,,3,"¿Qué receta puedo preparar con zanahoria rallada, crema de leche y cebolla salteada?"
+q070,compra,1,1,¿qué ingredientes necesito para hacer un plato de anchoas salteadas en sidra con cebolla y ajo?
 q072,compra,1,1,"¿qué ingredientes necesito para preparar un desayuno inglés con muffin, jamón ahumado y salsa cremosa?"
 q073,restriccion,6,3,"busco un sándwich casero con pan tostado, mantequilla de maní casera y rodajas de plátano"
 q074,ingredientes,3,2,"¿Qué receta se hace con lubina, laurel y limón al horno?"
@@ -63,4 +66,5 @@ q090,duda,1,1,¿Cuánto tiempo se hornea el pay de manzana con mermelada y troci
 q093,duda,,3,¿Cuánto tiempo hay que hornear el lomo marinado antes de añadir la salsa de durazno?
 q095,busqueda,8,1,berenjenas rellenas de champiñones con cebolla caramelizada y queso gratinado
 q096,busqueda,,6,"Arroz con lentejas, cebolla caramelizada y piñones"
+q097,duda,1,1,¿Cuánto tiempo debo hervir la leche con azúcar y canela antes de añadir el aguardiente?
 q099,restriccion,7,1,"busco un sándwich con solomillo asado al horno, alioli y toques de hierbas aromáticas"

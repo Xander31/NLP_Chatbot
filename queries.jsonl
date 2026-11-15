@@ -36,10 +36,12 @@
 {"qid": "q052", "query": "¿Qué puedo preparar con yogur natural, miel y vainilla para un postre refrescante?", "relevant_ids": ["doc_12456"], "source_chunk": "doc_12456_c00", "query_type": "ingredientes"}
 {"qid": "q053", "query": "torta húmeda de pera con trozos visibles y acabado crujiente por azúcar glass", "relevant_ids": ["doc_09109"], "source_chunk": "doc_09109_c00", "query_type": "busqueda"}
 {"qid": "q054", "query": "¿Cuánto tiempo hay que cocer las almejas con el tomate antes de añadir la coliflor frita?", "relevant_ids": ["doc_14858"], "source_chunk": "doc_14858_c00", "query_type": "duda"}
+{"qid": "q056", "query": "¿cuánto tiempo debo dejar remojando la pulpa de tamarindo antes de licuarla?", "relevant_ids": ["doc_05330"], "source_chunk": "doc_05330_c00", "query_type": "duda"}
 {"qid": "q057", "query": "busco golosinas de gelatina con forma de ojo azul y blanco ideales para Halloween", "relevant_ids": ["doc_12131"], "source_chunk": "doc_12131_c00", "query_type": "restriccion"}
 {"qid": "q058", "query": "¿Qué puedo preparar con harina integral, cacao y dulce de leche para un desayuno dulce?", "relevant_ids": ["doc_11642"], "source_chunk": "doc_11642_c00", "query_type": "ingredientes"}
 {"qid": "q059", "query": "caldereta de panga con tomate y guindilla", "relevant_ids": ["doc_06866"], "source_chunk": "doc_06866_c00", "query_type": "busqueda"}
 {"qid": "q060", "query": "¿qué ingredientes necesito para hacer una ensaladilla rusa con langostinos en copas?", "relevant_ids": ["doc_08749"], "source_chunk": "doc_08749_c00", "query_type": "compra"}
+{"qid": "q061", "query": "arepa venezolana rellena de queso hecha en plancha", "relevant_ids": ["doc_02340"], "source_chunk": "doc_02340_c00", "query_type": "busqueda"}
 {"qid": "q062", "query": "¿Qué cóctel refrescante con curaçao azul, vodka y ginebra puedo preparar para una fiesta?", "relevant_ids": ["doc_05608"], "source_chunk": "doc_05608_c00", "query_type": "ingredientes"}
 {"qid": "q063", "query": "busco un puré cremoso con jamón, parmesano y huevos gratinados al horno", "relevant_ids": ["doc_17503"], "source_chunk": "doc_17503_c00", "query_type": "restriccion"}
 {"qid": "q065", "query": "¿qué ingredientes necesito para preparar un ponche refrescante de frutas con cáscaras decoradas para seis niños?", "relevant_ids": ["doc_05355"], "source_chunk": "doc_05355_c00", "query_type": "compra"}
@@ -47,6 +49,7 @@
 {"qid": "q067", "query": "pudín de mandarina con bizcochos remojados en leche y licor", "relevant_ids": ["doc_12434"], "source_chunk": "doc_12434_c00", "query_type": "busqueda"}
 {"qid": "q068", "query": "¿cuánto tiempo hay que cocer los berberechos limpios con arroz para que el grano quede tierno?", "relevant_ids": ["doc_08846"], "source_chunk": "doc_08846_c00", "query_type": "duda"}
 {"qid": "q069", "query": "¿Qué receta puedo preparar con zanahoria rallada, crema de leche y cebolla salteada?", "relevant_ids": ["doc_07197"], "source_chunk": "doc_07197_c00", "query_type": "ingredientes"}
+{"qid": "q070", "query": "¿qué ingredientes necesito para hacer un plato de anchoas salteadas en sidra con cebolla y ajo?", "relevant_ids": ["doc_10627"], "source_chunk": "doc_10627_c00", "query_type": "compra"}
 {"qid": "q072", "query": "¿qué ingredientes necesito para preparar un desayuno inglés con muffin, jamón ahumado y salsa cremosa?", "relevant_ids": ["doc_07506"], "source_chunk": "doc_07506_c00", "query_type": "compra"}
 {"qid": "q073", "query": "busco un sándwich casero con pan tostado, mantequilla de maní casera y rodajas de plátano", "relevant_ids": ["doc_01052"], "source_chunk": "doc_01052_c00", "query_type": "restriccion"}
 {"qid": "q074", "query": "¿Qué receta se hace con lubina, laurel y limón al horno?", "relevant_ids": ["doc_10337"], "source_chunk": "doc_10337_c00", "query_type": "ingredientes"}
@@ -62,4 +65,5 @@
 {"qid": "q093", "query": "¿Cuánto tiempo hay que hornear el lomo marinado antes de añadir la salsa de durazno?", "relevant_ids": ["doc_04533"], "source_chunk": "doc_04533_c00", "query_type": "duda"}
 {"qid": "q095", "query": "berenjenas rellenas de champiñones con cebolla caramelizada y queso gratinado", "relevant_ids": ["doc_16172"], "source_chunk": "doc_16172_c00", "query_type": "busqueda"}
 {"qid": "q096", "query": "Arroz con lentejas, cebolla caramelizada y piñones", "relevant_ids": ["doc_02979"], "source_chunk": "doc_02979_c00", "query_type": "busqueda"}
+{"qid": "q097", "query": "¿Cuánto tiempo debo hervir la leche con azúcar y canela antes de añadir el aguardiente?", "relevant_ids": ["doc_01544"], "source_chunk": "doc_01544_c00", "query_type": "duda"}
 {"qid": "q099", "query": "busco un sándwich con solomillo asado al horno, alioli y toques de hierbas aromáticas", "relevant_ids": ["doc_05009"], "source_chunk": "doc_05009_c00", "query_type": "restriccion"}

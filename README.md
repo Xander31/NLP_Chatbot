@@ -51,15 +51,15 @@ Parámetros del notebook: `Phrases(min_count=2, threshold=20)` y `filter_extreme
 - **Modelo: `qwen3.5:9b-q4_K_M`** (Ollama). Lo comparamos con `gemma4:12b-it-q4_K_M` sobre las mismas 10 recetas: Qwen fue más preciso y específico (Gemma daba consultas vagas, como «guiso de legumbres con marisco») y más rápido (6,8 frente a 10,8 s por consulta), con un solapamiento similar (66 % frente a 60 %) y ninguna copia literal en ninguno de los dos. Resultados en [`results/query_model_selection/`](results/query_model_selection/).
 - **Cinco tipos de consulta**, 20 de cada, basados en los casos de uso del chatbot: `busqueda` (frase sin verbo), `ingredientes`, `duda` sobre un detalle de la receta, `restriccion` (dieta, técnica u ocasión) y `compra`. Cada consulta guarda su tipo para analizar los resultados por tipo. Los casos con varias recetas correctas (comparar, sustituciones) o ninguna (preguntas sin respuesta) quedan para el Hito 2.
 - **Para no favorecer a TF-IDF y BM25:** el prompt prohíbe copiar el título o frases de la receta y pide describir con otras palabras, manteniendo rasgos que identifiquen la receta.
-- **Revisión** apoyada en métricas: % de lemas copiados, palabras seguidas copiadas y longitud. Las consultas vagas no saltan ningún aviso: hay que leerlas. Claude hizo una primera revisión de las 100 consultas y después revisamos a mano muchas de ellas.
-- **Resultado de la revisión:** quedan **65** consultas en `queries.jsonl`. De las 35 descartadas, 34 son ambiguas (otra receta responde igual de bien) y 1 pregunta un dato que la receta no contiene; 2 de las ambiguas tienen además ese segundo problema. Detalle en [`results/query_review/revision_consultas.md`](results/query_review/revision_consultas.md).
+- **Revisión** apoyada en métricas: % de lemas copiados, palabras seguidas copiadas y longitud. Las consultas vagas no saltan ningún aviso: hay que leerlas. Claude hizo una primera revisión de las 100 consultas y una segunda de las descartadas; revisamos a mano muchas de ellas.
+- **Resultado de la revisión:** quedan **69** consultas en `queries.jsonl`. De las 31 descartadas, 30 son ambiguas (otra receta responde igual de bien) y 1 pregunta un dato que la receta no contiene; 1 de las ambiguas tiene además ese segundo problema. Detalle en [`results/query_review/revision_consultas.md`](results/query_review/revision_consultas.md).
 
 **7. Recuperación y evaluación.** TF-IDF con similitud coseno (gensim) y BM25 (`bm25s`, variante `lucene`, `k1 = 1.5`, `b = 0.75`). La evaluación es a nivel de documento, sobre los 10 primeros resultados.
 
 | Método | Recall@5 | Recall@10 | MRR |
 |---|---|---|---|
-| TF-IDF | 0,692 | 0,785 | 0,588 |
-| BM25 | 0,923 | 0,954 | 0,805 |
+| TF-IDF | 0,710 | 0,797 | 0,597 |
+| BM25 | 0,928 | 0,957 | 0,809 |
 
 ## Estructura
 ```
