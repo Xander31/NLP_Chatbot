@@ -11,9 +11,10 @@ Seguimos el notebook del profesor (*Text Vectorization I*, sección 4) siempre q
 Con [uv](https://docs.astral.sh/uv/), desde la raíz del repo:
 ```bash
 uv venv --python 3.12
-uv pip install -r requirements.txt
 .venv\Scripts\activate        # en Linux o macOS: source .venv/bin/activate
+uv pip install -r requirements.txt
 ```
+Activa el entorno antes de instalar: si hay otro entorno activado, `uv pip` instala en ese.
 En VS Code hay que seleccionar el intérprete de `.venv`. Para volver a generar las consultas hace falta además [Ollama](https://ollama.com/download).
 
 ## Pipeline
@@ -22,11 +23,11 @@ En VS Code hay que seleccionar el intérprete de `.venv`. Para volver a generar 
 | 1 | `src/download.py` | `data/dataset.csv` | ✅ |
 | 2 | `src/build_collection.py` | `data/processed/chunks.jsonl` | ✅ |
 | 3 | `src/preprocess.py --n-process 4` | `tokens.jsonl`, `phrases.model`, `dictionary.dict` | ✅ |
-| 4 | `src/generate_queries.py --model …` y luego `--finalize …` | `data/queries_candidates.jsonl` y `queries.jsonl` | ✅ |
+| 4 | `src/generate_queries.py --model … --output data/queries_candidates.jsonl` y luego `--finalize data/queries_candidates.jsonl` | `data/queries_candidates.jsonl` y `queries.jsonl` | ✅ |
 | 5 | `src/retrieval.py "consulta"` | Búsqueda con TF-IDF y BM25 | ✅ |
 | 6 | `src/evaluate.py` | Recall@K y MRR, `results/evaluation/per_query.csv` | ✅ |
 
-Todos los scripts se ejecutan desde la raíz del repo y son deterministas.
+Todos los scripts se ejecutan desde la raíz del repo y son deterministas. Volver a generar las consultas (paso 4) sobrescribe las marcas `discard` de la revisión manual.
 
 ## Decisiones
 

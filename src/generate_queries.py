@@ -314,7 +314,7 @@ def generate(model, n, output):
             "seconds": seconds,
         })
         flag_txt = f"  [{', '.join(metrics['flags'])}]" if metrics["flags"] else ""
-        print(f"{i:3d}/{n} ({seconds}s) [{query_type}] {chunk['title'][:50]!r}\n      → {query}{flag_txt}")
+        print(f"{i:3d}/{n} ({seconds}s) [{query_type}] {chunk['title'][:50]!r}\n      -> {query}{flag_txt}")
 
     output.parent.mkdir(parents=True, exist_ok=True)
     with open(output, "w", encoding="utf-8") as f:

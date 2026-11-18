@@ -199,7 +199,7 @@ def main():
     too_common = sorted((D.dfs[i] / D.num_docs, D[i]) for i in D.keys()
                         if D.dfs[i] > NO_ABOVE * D.num_docs)
     D.filter_extremes(no_below=NO_BELOW, no_above=NO_ABOVE)
-    print(f"Diccionario: {n_before:,} términos → {len(D):,} tras filter_extremes "
+    print(f"Diccionario: {n_before:,} términos -> {len(D):,} tras filter_extremes "
           f"(no_below={NO_BELOW}, no_above={NO_ABOVE})")
     print("  eliminados por demasiado frecuentes:",
           ", ".join(f"{t} ({p:.0%})" for p, t in reversed(too_common)) or "ninguno")
