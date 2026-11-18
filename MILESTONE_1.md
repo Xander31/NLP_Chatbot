@@ -2,6 +2,12 @@
 
 Chatbot de recetas de cocina en español. Notebook ejecutado: [`notebooks/Milestone_1.ipynb`](notebooks/Milestone_1.ipynb). Consultas: [`queries.jsonl`](queries.jsonl).
 
+## Integrantes
+- Alvaro  Espinoza (100594482)
+- Oscar Ortega (100499678)
+- Sergio Minguez (100602888)
+- Daniel Martin (100601511)
+
 ## Qué se ha hecho
 
 - **Corpus:** [`somosnlp/recetas-cocina`](https://huggingface.co/datasets/somosnlp/recetas-cocina). De 28.238 recetas nos quedamos con 17.505, después de quitar las incompletas, las repetidas y las de más de 400 palabras.
